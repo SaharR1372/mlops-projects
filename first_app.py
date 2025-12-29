@@ -37,8 +37,10 @@ def query(payload):
 
 labels=st.multiselect("chose your labels", ["refund", "legal", "faq"])
 inputs=st.text_input("Enter your text", "Hi, I recently bought a device from your company but it is not working as advertised and I would like to get reimbursed!")
-output = query({
-    "inputs": inputs,
-    "parameters": {"candidate_labels": labels},
-})
-output
+
+if st.button("Classify"):
+    output = query({
+        "inputs": inputs,
+        "parameters": {"candidate_labels": labels},
+    })
+    st.write(output)
